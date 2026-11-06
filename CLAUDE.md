@@ -104,7 +104,7 @@ slug 一旦決定就不要改（網址會變）。四個地方（作品頁、原
 
 ## 7. 作品頁格式（`works/<slug>.html`）
 
-一律從 `templates/work-template.html` 複製。每頁的 `<main>` 裡必須依序包含以下六個區塊，用 `data-section` 標記：
+一律從 `templates/work-template.html` 複製。每頁的 `<main>` 裡必須依序包含以下五個區塊，用 `data-section` 標記：
 
 | 順序 | `data-section` | 標題 | 要寫什麼 |
 |---|---|---|---|
@@ -113,9 +113,8 @@ slug 一旦決定就不要改（網址會變）。四個地方（作品頁、原
 | 3 | `tech` | 技術與工具 | 用了什麼、為什麼選它。可用條列。 |
 | 4 | `process` | 製作過程 | 依時間順序的關鍵決定與遇到的問題，用 `<ol class="timeline">`。 |
 | 5 | `result` | 目前成果 | 做到哪裡、可以展示什麼。有圖放圖。 |
-| 6 | `reflection` | 反思與下一步 | 學到什麼、下一步打算做什麼。 |
 
-**引用來源**：除了 `my-role` 和 `reflection` 之外，每個區塊最後都要有一行來源，連到 `sources/` 裡的實際檔案：
+**引用來源**：除了 `my-role` 之外，每個區塊最後都要有一行來源，連到 `sources/` 裡的實際檔案：
 
 ```html
 <p class="src">來源：<a href="../sources/pin-deal/code/AGENTS.md">AGENTS.md</a>、<a href="../sources/pin-deal/SOURCE.md">SOURCE.md</a></p>
@@ -132,7 +131,7 @@ slug 一旦決定就不要改（網址會變）。四個地方（作品頁、原
 - **只寫 `sources/` 裡查得到的事實。** 數字一定要能在來源檔案找到原文。
 - 缺資料時寫成 `<p class="todo">待補：……</p>`，網頁會用虛線框標示，之後再補。不要自己編。
   - 團隊作品的個人分工、得獎名次、心得感想，來源裡通常沒有，一律先標待補。
-- `reflection` 區塊的心得必須是作者本人說的；AI 只能整理來源裡已寫明的「下一步」或「限制」。
+- 作者決定先不放「反思與下一步」區塊（2026-11-06）。不要自行加回，也不要替作者寫心得；來源裡寫明的限制可以放在 `result` 區塊。
 - 團隊作品必須避免把團隊成果寫成個人功勞：作者分工確認前，用「我們」描述功能。
 - 每段不超過 4 句；長內容改用條列。
 
@@ -157,14 +156,14 @@ slug 一旦決定就不要改（網址會變）。四個地方（作品頁、原
 3. 寫 `sources/<slug>/SOURCE.md`，並在 `sources/README.md` 的總表加一列。
 4. 先讀 `SOURCE.md` 列出的檔案，再讀其他需要的檔案。
 5. 準備封面：有截圖就用截圖或 App icon 合成 `cover.jpg`；沒有就畫一張抽象的 `cover.svg`。
-6. 複製 `templates/work-template.html` 為 `works/<slug>.html`，填入六個區塊，每區塊附上來源。
+6. 複製 `templates/work-template.html` 為 `works/<slug>.html`，填入五個區塊，每區塊附上來源。
 7. 在 `data/works.js` 依時間順序加入資料物件。
 8. 執行 `python scripts/check.py`，全部通過才算完成。
 9. 用瀏覽器打開 `index.html`，確認目錄、篩選、上下篇導覽和來源連結都正常。
 
 ### B. 更新作品進度
 - 重新匯入 `sources/<slug>/code/`，更新 `SOURCE.md` 的匯入日期。
-- 修改該頁的 `process`（新增 timeline 項目）、`result`、`reflection`。
+- 修改該頁的 `process`（新增 timeline 項目）與 `result`。
 - 狀態、工具等資訊改變時，只要改 `works.js`，資訊欄會自動更新。
 - 作者補上資料後，刪掉對應的 `.todo` 段落。
 

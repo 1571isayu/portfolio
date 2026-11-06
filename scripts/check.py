@@ -10,7 +10,7 @@ if hasattr(sys.stdout, "reconfigure"):
 ROOT = Path(__file__).resolve().parent.parent
 TYPES = ["AI 應用", "網頁應用", "手機 App", "網站", "其他"]
 STATUSES = ["進行中", "已完成"]
-SECTIONS = ["overview", "my-role", "tech", "process", "result", "reflection"]
+SECTIONS = ["overview", "my-role", "tech", "process", "result"]
 NEED_SRC = ["overview", "tech", "process", "result"]
 REQUIRED = ["slug", "title", "subtitle", "date", "type", "role", "team", "status", "tools", "cover"]
 SOURCE_HEADINGS = ["來源", "排除", "作者提供的背景", "先讀這些檔案"]

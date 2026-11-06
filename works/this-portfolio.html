@@ -46,7 +46,7 @@
           <li><strong>純 HTML / CSS / JavaScript</strong>：沒有建置步驟，GitHub Pages 直接部署，雙擊 <code>index.html</code> 也能看。</li>
           <li><strong>sources/</strong>：每件作品的原始資料快照，附一份 <code>SOURCE.md</code>，寫明來源和排除了哪些機密。</li>
           <li><strong>data/works.js</strong>：所有作品的索引放在同一個檔案，首頁目錄、篩選、作品頁資訊欄都從這裡產生。</li>
-          <li><strong>scripts/check.py</strong>：檢查檔名、六個區塊、來源連結、類型清單，也會掃描 <code>sources/</code> 有沒有留下 API key。</li>
+          <li><strong>scripts/check.py</strong>：檢查檔名、五個區塊、來源連結、類型清單，也會掃描 <code>sources/</code> 有沒有留下 API key。</li>
           <li><strong>Claude</strong>：依 <code>CLAUDE.md</code> 讀原始資料、產生與修改頁面。</li>
           </ul>
           <p class="src">來源：<a href="../CLAUDE.md">CLAUDE.md</a>、<a href="../scripts/check.py">check.py</a></p>
@@ -55,7 +55,7 @@
         <section data-section="process">
           <h2>製作過程</h2>
           <ol class="timeline">
-          <li><span class="when">先定格式</span>把每件作品固定成六個區塊：概要、我負責的部分、技術、過程、成果、反思。</li>
+          <li><span class="when">先定格式</span>把每件作品固定成五個區塊：概要、我負責的部分、技術、過程、成果。</li>
           <li><span class="when">第一版的問題</span>第一版作品頁是 AI 依對話印象寫的，有幾句心得和描述是 AI 自己推測的。</li>
           <li><span class="when">改成資料先行</span>把四個專案的程式碼放進 <code>sources/</code>，規定每段內容都要附來源連結，查不到的就標「待補」。</li>
           <li><span class="when">把機密擋在門外</span>匯入時發現有一份企劃書匯出檔留著真實的 API key，所以在規則和 <code>check.py</code> 裡加上機密掃描。</li>
@@ -67,11 +67,6 @@
           <h2>目前成果</h2>
           <p>目前有五件作品，都是照同一份模板和規則產生的。匯入新作品的步驟寫在 <code>CLAUDE.md</code> 第 10 節，最後一步是跑 <code>check.py</code>，全部通過才算完成。</p>
           <p class="src">來源：<a href="../CLAUDE.md">CLAUDE.md</a></p>
-        </section>
-
-        <section data-section="reflection">
-          <h2>反思與下一步</h2>
-          <p class="todo">待補：我自己的心得與下一步。</p>
         </section>
       </main>
     </div>
