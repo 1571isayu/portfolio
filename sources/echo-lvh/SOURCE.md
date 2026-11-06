@@ -11,6 +11,9 @@
 ## 作者提供的背景
 - TAICA 生成式 AI 課程期末專題，個人完成，12 月前交件
 
+## 作者提供的截圖（2026-11-06）
+- `assets/images/echo-lvh/02-app-screens.png`：取自作者的「期末專案發想」文件中的 App 截圖，只保留首頁與量測結果，**超音波影像已遮蔽**
+
 ## 先讀這些檔案
 - `code/README.md`：專案目的
 - `code/docs/week2_data.md`：第 2～7 週的紀錄與 v1～v3d 實驗結果（最重要）
