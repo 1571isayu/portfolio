@@ -33,15 +33,10 @@ html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   background-color: var(--paper);
-  /* 筆記本格線 */
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px);
-  background-size: 100% 2rem;
-  background-attachment: local;
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 1rem;
-  line-height: 2rem; /* 與格線同步 */
+  line-height: 1.8;
 }
 a { color: var(--accent); text-underline-offset: 3px; }
 a:focus-visible, button:focus-visible {
