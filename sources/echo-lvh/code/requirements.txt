@@ -1,0 +1,6 @@
+# ml/ 資料處理（第 1–2 週）
+numpy
+pandas
+opencv-python
+matplotlib
+tqdm

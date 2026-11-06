@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>接棒引擎 Handover Engine｜苡婕的作品紀錄簿</title>
+  <meta name="description" content="上傳專案 ZIP，產生多日交接教材與測驗">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-slug="handover-engine">
+  <div class="wrap">
+    <header class="site-head">
+      <a class="name" href="../index.html">苡婕的作品紀錄簿</a>
+      <nav><a href="../index.html#works">作品</a><a href="../index.html#about">關於我</a></nav>
+    </header>
+
+    <div class="work-head">
+      <a class="back" href="../index.html#works">回作品目錄</a>
+      <h1>接棒引擎 Handover Engine</h1>
+      <p class="sub">上傳專案 ZIP，產生多日交接教材與測驗</p>
+    </div>
+
+    <div class="work-body">
+      <dl class="facts" id="facts"></dl>
+
+      <main class="work-main">
+        <figure class="cover"><img src="../assets/images/handover-engine/cover.jpg" alt="接棒引擎 Handover Engine封面"></figure>
+
+        <section data-section="overview">
+          <h2>作品概要</h2>
+          <p>接手別人的專案時，最花時間的是搞懂程式碼。接棒引擎分析專案的 ZIP，產生多日的交接學習計畫、每日教材、測驗、交接缺口清單與可下載的交接包，幫接任者快速上手。</p>
+          <p class="src">來源：<a href="../sources/handover-engine/code/README.md">README.md</a>、<a href="../sources/handover-engine/SOURCE.md">SOURCE.md</a></p>
+        </section>
+
+        <section data-section="my-role">
+          <h2>我負責的部分</h2>
+          <p>團隊作品。</p>
+          <p class="todo">待補：我在團隊中負責的部分。</p>
+        </section>
+
+        <section data-section="tech">
+          <h2>技術與工具</h2>
+          <ul>
+          <li><strong>LangGraph</strong>：把分析流程拆成多個節點：ingest → index → extract → coverage → gaps → outline → 每日教材 → 測驗 → validate / repair → 圖表 → PDF → 打包。</li>
+          <li><strong>FastAPI</strong>：Jobs 與學習計畫 API，前端（HTML / CSS / JS）也由同一個服務提供，不用另外啟動前端伺服器。</li>
+          <li><strong>OpenAI 相容 API</strong>：線上模式產生內容；另有不需要金鑰的 fake 模式，可以離線驗證。</li>
+          <li><strong>SQLite</strong>：記錄 Job 與執行狀態。</li>
+          <li><strong>fpdf2</strong>：匯出教材、每日筆記與缺口清單 PDF。</li>
+          <li><strong>pytest</strong>：26 個測試檔，可以用 fake 模式跑完整離線回歸。</li>
+          </ul>
+          <p class="src">來源：<a href="../sources/handover-engine/code/README.md">README.md</a>、<a href="../sources/handover-engine/code/backend/pyproject.toml">pyproject.toml</a></p>
+        </section>
+
+        <section data-section="process">
+          <h2>製作過程</h2>
+          <ol class="timeline">
+          <li><span class="when">2026 年 9 月</span>在蝦皮 × OpenAI Codex 黑客松和團隊一起開發。</li>
+          </ol>
+          <p class="todo">待補：開發過程中的關鍵決定與遇到的問題。</p>
+          <p class="src">來源：<a href="../sources/handover-engine/SOURCE.md">SOURCE.md</a></p>
+        </section>
+
+        <section data-section="result">
+          <h2>目前成果</h2>
+          <p>可以實際使用的完整流程。封面和以下截圖用 TabiTabi 的程式碼（travel-app.zip，3 天交接）當作測試專案：</p>
+          <figure><img src="../assets/images/handover-engine/02-daily-task.jpg" alt="每日任務畫面：Day 2 教材" loading="lazy"><figcaption>每日任務：Day 1 已通過、Day 2 未通過。教材列出今日目標，並附上原始檔案連結</figcaption></figure>
+          <figure><img src="../assets/images/handover-engine/03-gaps-board.jpg" alt="交接缺口三欄看板" loading="lazy"><figcaption>交接缺口：未解決／確認中／已解決三欄看板，可跨欄選取後匯出 PDF</figcaption></figure>
+          <div class="shots shots-narrow">
+            <figure><img src="../assets/images/handover-engine/04-assistant.png" alt="交接小幫手對話視窗" loading="lazy"><figcaption>交接小幫手：根據專案內容回答問題，並指出該看哪個檔案</figcaption></figure>
+          </div>
+          <ul>
+          <li>上傳專案 ZIP，安全解壓，排除虛擬環境、相依套件與機密檔案。</li>
+          <li>每日查核必須 100 分才算通過；另有期中查核與上手驗收。</li>
+          <li>可下載完整交接 ZIP 與各種 PDF。</li>
+          </ul>
+          <p class="src">來源：<a href="../sources/handover-engine/code/README.md">README.md</a>、<a href="../sources/handover-engine/SOURCE.md">SOURCE.md</a>（截圖）</p>
+        </section>
+
+        <section data-section="reflection">
+          <h2>反思與下一步</h2>
+          <p class="todo">待補：我自己的心得與下一步。</p>
+        </section>
+      </main>
+    </div>
+
+    <nav class="pager" id="pager" aria-label="上下篇作品"></nav>
+    <footer class="site-foot">© 游苡婕 · 本頁依 CLAUDE.md 規則製作</footer>
+  </div>
+  <script src="../data/works.js"></script>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

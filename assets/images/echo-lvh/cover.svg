@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#17222b"/>
+  <!-- 扇形超音波視野（示意，非資料集影像） -->
+  <path d="M400 40 L130 420 A380 380 0 0 0 670 420 Z" fill="#22313c"/>
+  <path d="M265 250 C300 200 360 190 410 205 C470 222 520 250 540 300 C520 330 470 335 410 320 C350 305 300 300 265 250 Z" fill="#33444f"/>
+  <path d="M290 262 C330 228 380 228 420 240 C460 252 495 272 510 298" fill="none" stroke="#5a6b75" stroke-width="18" stroke-linecap="round"/>
+  <!-- 4 個關鍵點與 3 段量測線：IVSd / LVIDd / LVPWd -->
+  <g stroke-width="7" stroke-linecap="round">
+    <line x1="405" y1="168" x2="410" y2="204" stroke="#b58cff"/>
+    <line x1="410" y1="204" x2="418" y2="318" stroke="#f2c94c"/>
+    <line x1="418" y1="318" x2="422" y2="352" stroke="#5cc3b8"/>
+  </g>
+  <g fill="#ffffff"><circle cx="405" cy="168" r="9"/><circle cx="410" cy="204" r="9"/><circle cx="418" cy="318" r="9"/><circle cx="422" cy="352" r="9"/></g>
+</svg>

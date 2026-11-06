@@ -1,0 +1,14 @@
+# 後端（第 4 週起）
+fastapi
+uvicorn[standard]
+python-multipart
+python-dotenv
+numpy
+pandas
+opencv-python
+torch
+segmentation-models-pytorch
+google-genai
+# 測試
+pytest
+httpx

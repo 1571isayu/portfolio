@@ -1,0 +1,172 @@
+/* 全站唯一樣式表。顏色只用這裡的變數（見 CLAUDE.md 第 8 節）。 */
+
+/* ---------- 變數 ---------- */
+:root {
+  --paper: #f3f5f2;
+  --paper-deep: #e7ebe6;
+  --ink: #1d2b36;
+  --ink-soft: #5a6874;
+  --line: #d3dbd6;
+  --accent: #0e7c74;
+  --accent-soft: #cfe6e2;
+  --mark: #fbe9a6;
+  --measure: 40em;
+  --font-head: "LXGW WenKai TC", "Noto Serif TC", serif;
+  --font-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #161d22;
+    --paper-deep: #1e272d;
+    --ink: #e4e9e6;
+    --ink-soft: #9aa7ae;
+    --line: #2d3940;
+    --accent: #5cc3b8;
+    --accent-soft: #1f3b39;
+    --mark: #5a4d1c;
+  }
+}
+
+/* ---------- 基礎 ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background-color: var(--paper);
+  /* 筆記本格線 */
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px);
+  background-size: 100% 2rem;
+  background-attachment: local;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 2rem; /* 與格線同步 */
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+img { max-width: 100%; height: auto; display: block; }
+h1, h2, h3 { font-family: var(--font-head); font-weight: 700; color: var(--ink); }
+.wrap { max-width: 64rem; margin: 0 auto; padding: 0 1rem; }
+@media (min-width: 700px) { .wrap { padding: 0 2rem; } }
+
+/* ---------- 頁首 ---------- */
+.site-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 1rem 0; border-bottom: 2px solid var(--ink);
+}
+.site-head .name { font-family: var(--font-head); font-size: 1.25rem; text-decoration: none; color: var(--ink); }
+.site-head nav a { margin-left: 1.25rem; color: var(--ink-soft); text-decoration: none; }
+.site-head nav a:hover { color: var(--accent); }
+
+/* ---------- 首頁：開場 ---------- */
+.intro { padding: 4rem 0 2rem; }
+.intro h1 { font-size: clamp(2.25rem, 7vw, 4rem); line-height: 1.15; margin: 0 0 1rem; letter-spacing: 0.02em; }
+.intro p { max-width: var(--measure); margin: 0; color: var(--ink-soft); font-size: 1.0625rem; }
+.intro p strong { color: var(--ink); font-weight: 500; background: linear-gradient(transparent 55%, var(--mark) 55%); }
+.pulse { width: 100%; height: 90px; margin-top: 2rem; display: block; }
+.pulse path { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.pulse .draw { stroke-dasharray: 2400; stroke-dashoffset: 2400; animation: draw 2.4s ease-out 0.2s forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .pulse .draw { animation: none; stroke-dashoffset: 0; } }
+
+/* ---------- 首頁：作品目錄 ---------- */
+.index-head { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: baseline; justify-content: space-between; margin-top: 2rem; }
+.index-head h2 { font-size: 1.5rem; margin: 0; }
+.filters { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.filters button {
+  font: inherit; font-size: 0.875rem; line-height: 1.75rem;
+  padding: 0 0.75rem; border: 1px solid var(--ink-soft); border-radius: 999px;
+  background: transparent; color: var(--ink-soft); cursor: pointer;
+}
+.filters button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+.work-list { list-style: none; margin: 1rem 0 0; padding: 0; border-top: 2px solid var(--ink); }
+.work-row { border-bottom: 1px solid var(--ink-soft); }
+.work-row a {
+  display: grid; grid-template-columns: 1fr; gap: 0.75rem;
+  padding: 1.25rem 0; color: var(--ink); text-decoration: none;
+}
+@media (min-width: 760px) {
+  .work-row a { grid-template-columns: 4.5rem 1fr 13rem 10rem; gap: 1.5rem; align-items: start; }
+}
+.work-row .year { font-family: var(--font-head); color: var(--ink-soft); }
+.work-row .title { font-family: var(--font-head); font-size: 1.375rem; line-height: 2rem; display: block; }
+.work-row a:hover .title { color: var(--accent); }
+.work-row .sub { color: var(--ink-soft); font-size: 0.9375rem; }
+.work-row .meta { font-size: 0.875rem; color: var(--ink-soft); line-height: 1.75rem; }
+.work-row .meta b { color: var(--ink); font-weight: 500; }
+.work-row .thumb { border: 1px solid var(--line); aspect-ratio: 16 / 10; overflow: hidden; background: var(--paper-deep); }
+.work-row .thumb img { width: 100%; height: 100%; object-fit: cover; }
+.status { display: inline-block; font-size: 0.8125rem; line-height: 1.5rem; padding: 0 0.5rem; border-radius: 3px; }
+.status[data-status="進行中"] { background: var(--mark); color: var(--ink); }
+.status[data-status="已完成"] { background: var(--accent-soft); color: var(--ink); }
+.empty { color: var(--ink-soft); padding: 2rem 0; }
+
+/* ---------- 首頁：關於 ---------- */
+.about { margin: 4rem 0; max-width: var(--measure); }
+.about h2 { font-size: 1.5rem; margin: 0 0 0.5rem; }
+.about p { margin: 0 0 1rem; }
+
+/* ---------- 作品頁 ---------- */
+.work-head { padding: 3rem 0 1.5rem; border-bottom: 2px solid var(--ink); }
+.back { font-size: 0.9375rem; text-decoration: none; }
+.work-head h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.2; margin: 0.5rem 0; }
+.work-head .sub { color: var(--ink-soft); margin: 0; font-size: 1.0625rem; }
+.work-body { display: grid; grid-template-columns: 1fr; gap: 2rem; padding: 2rem 0; }
+@media (min-width: 900px) { .work-body { grid-template-columns: 15rem 1fr; gap: 3rem; } }
+
+.facts { margin: 0; font-size: 0.9375rem; align-self: start; }
+@media (min-width: 900px) { .facts { position: sticky; top: 1rem; } }
+.facts dt { color: var(--ink-soft); font-size: 0.8125rem; }
+.facts dd { margin: 0 0 0.5rem; }
+.facts ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 0.5rem; }
+.facts li { border: 1px solid var(--line); background: var(--paper); padding: 0 0.5rem; line-height: 1.75rem; font-size: 0.875rem; }
+
+.work-main { max-width: var(--measure); }
+.work-main section { margin-bottom: 2rem; }
+.work-main h2 { font-size: 1.375rem; margin: 0 0 0.5rem; padding-left: 0.75rem; border-left: 4px solid var(--accent); line-height: 2rem; }
+.work-main p { margin: 0 0 1rem; }
+.work-main ul { padding-left: 1.25rem; margin: 0 0 1rem; }
+.cover { border: 1px solid var(--line); margin: 0 0 2rem; aspect-ratio: 16 / 10; background: var(--paper-deep); }
+.cover img { width: 100%; height: 100%; object-fit: cover; }
+figure { margin: 0 0 1rem; }
+/* 並排的手機截圖 */
+.shots { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.shots figure { margin: 0; }
+.shots img { border: 1px solid var(--line); }
+.shots-narrow { grid-template-columns: minmax(0, 22rem); }
+.shots-phone { grid-template-columns: repeat(3, minmax(0, 10rem)); }
+.shots-phone figcaption { font-size: 0.8125rem; line-height: 1.5rem; }
+figcaption { font-size: 0.875rem; color: var(--ink-soft); }
+
+/* 製作過程時間軸 */
+.timeline { list-style: none; padding: 0; margin: 0; border-left: 2px solid var(--line); }
+.timeline li { position: relative; padding: 0 0 1rem 1.25rem; }
+.timeline li::before {
+  content: ""; position: absolute; left: -7px; top: 0.6rem;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--paper); border: 2px solid var(--accent);
+}
+.timeline .when { font-family: var(--font-head); color: var(--accent); display: block; }
+
+/* 來源標示（見 CLAUDE.md 第 7 節） */
+.src { font-size: 0.8125rem; color: var(--ink-soft); line-height: 1.75rem; }
+.src a { color: var(--ink-soft); }
+.src a:hover { color: var(--accent); }
+
+/* 待補標示（見 CLAUDE.md 第 7 節） */
+.todo { color: var(--ink-soft); border: 1px dashed var(--ink-soft); padding: 0 0.75rem; font-size: 0.9375rem; }
+
+/* 上下篇導覽 */
+.pager { display: flex; justify-content: space-between; gap: 1rem; border-top: 2px solid var(--ink); padding: 1.5rem 0 3rem; }
+.pager a { text-decoration: none; max-width: 48%; }
+.pager .label { display: block; font-size: 0.8125rem; color: var(--ink-soft); }
+.pager .next { text-align: right; margin-left: auto; }
+
+/* ---------- 頁尾 ---------- */
+.site-foot { border-top: 1px solid var(--ink-soft); padding: 1rem 0 2rem; color: var(--ink-soft); font-size: 0.875rem; }

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>作品紀錄簿（本網站）｜苡婕的作品紀錄簿</title>
+  <meta name="description" content="用一份 CLAUDE.md 讓 AI 照規則持續新增作品">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-slug="this-portfolio">
+  <div class="wrap">
+    <header class="site-head">
+      <a class="name" href="../index.html">苡婕的作品紀錄簿</a>
+      <nav><a href="../index.html#works">作品</a><a href="../index.html#about">關於我</a></nav>
+    </header>
+
+    <div class="work-head">
+      <a class="back" href="../index.html#works">回作品目錄</a>
+      <h1>作品紀錄簿（本網站）</h1>
+      <p class="sub">用一份 CLAUDE.md 讓 AI 照規則持續新增作品</p>
+    </div>
+
+    <div class="work-body">
+      <dl class="facts" id="facts"></dl>
+
+      <main class="work-main">
+        <figure class="cover"><img src="../assets/images/this-portfolio/cover.svg" alt="作品紀錄簿（本網站）封面"></figure>
+
+        <section data-section="overview">
+          <h2>作品概要</h2>
+          <p>你現在看到的這個網站。生成式 AI 課程的作業要求建立一份 <code>CLAUDE.md</code>，讓 AI 讀完就知道這個專案要怎麼繼續做下去。我把作品集做成一個小型的 LLM Wiki：原始程式碼放在 <code>sources/</code>，AI 照規則讀完後整理成作品頁。</p>
+          <p class="src">來源：<a href="../CLAUDE.md">CLAUDE.md</a></p>
+        </section>
+
+        <section data-section="my-role">
+          <h2>我負責的部分</h2>
+          <p>個人作品。我決定網站要呈現什麼、每件作品要放哪些原始資料，並和 Claude 一起把規則寫成文件、做出網站。</p>
+        </section>
+
+        <section data-section="tech">
+          <h2>技術與工具</h2>
+          <ul>
+          <li><strong>純 HTML / CSS / JavaScript</strong>：沒有建置步驟，GitHub Pages 直接部署，雙擊 <code>index.html</code> 也能看。</li>
+          <li><strong>sources/</strong>：每件作品的原始資料快照，附一份 <code>SOURCE.md</code>，寫明來源和排除了哪些機密。</li>
+          <li><strong>data/works.js</strong>：所有作品的索引放在同一個檔案，首頁目錄、篩選、作品頁資訊欄都從這裡產生。</li>
+          <li><strong>scripts/check.py</strong>：檢查檔名、六個區塊、來源連結、類型清單，也會掃描 <code>sources/</code> 有沒有留下 API key。</li>
+          <li><strong>Claude</strong>：依 <code>CLAUDE.md</code> 讀原始資料、產生與修改頁面。</li>
+          </ul>
+          <p class="src">來源：<a href="../CLAUDE.md">CLAUDE.md</a>、<a href="../scripts/check.py">check.py</a></p>
+        </section>
+
+        <section data-section="process">
+          <h2>製作過程</h2>
+          <ol class="timeline">
+          <li><span class="when">先定格式</span>把每件作品固定成六個區塊：概要、我負責的部分、技術、過程、成果、反思。</li>
+          <li><span class="when">第一版的問題</span>第一版作品頁是 AI 依對話印象寫的，有幾句心得和描述是 AI 自己推測的。</li>
+          <li><span class="when">改成資料先行</span>把四個專案的程式碼放進 <code>sources/</code>，規定每段內容都要附來源連結，查不到的就標「待補」。</li>
+          <li><span class="when">把機密擋在門外</span>匯入時發現有一份企劃書匯出檔留著真實的 API key，所以在規則和 <code>check.py</code> 裡加上機密掃描。</li>
+          </ol>
+          <p class="src">來源：<a href="../CLAUDE.md">CLAUDE.md</a>、<a href="../sources/README.md">README.md</a></p>
+        </section>
+
+        <section data-section="result">
+          <h2>目前成果</h2>
+          <p>目前有五件作品，都是照同一份模板和規則產生的。匯入新作品的步驟寫在 <code>CLAUDE.md</code> 第 10 節，最後一步是跑 <code>check.py</code>，全部通過才算完成。</p>
+          <p class="src">來源：<a href="../CLAUDE.md">CLAUDE.md</a></p>
+        </section>
+
+        <section data-section="reflection">
+          <h2>反思與下一步</h2>
+          <p class="todo">待補：我自己的心得與下一步。</p>
+        </section>
+      </main>
+    </div>
+
+    <nav class="pager" id="pager" aria-label="上下篇作品"></nav>
+    <footer class="site-foot">© 游苡婕 · 本頁依 CLAUDE.md 規則製作</footer>
+  </div>
+  <script src="../data/works.js"></script>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PinDeal｜苡婕的作品紀錄簿</title>
+  <meta name="description" content="讓 AI 代理人替乘客協商路線與車資的共乘">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-slug="pin-deal">
+  <div class="wrap">
+    <header class="site-head">
+      <a class="name" href="../index.html">苡婕的作品紀錄簿</a>
+      <nav><a href="../index.html#works">作品</a><a href="../index.html#about">關於我</a></nav>
+    </header>
+
+    <div class="work-head">
+      <a class="back" href="../index.html#works">回作品目錄</a>
+      <h1>PinDeal</h1>
+      <p class="sub">讓 AI 代理人替乘客協商路線與車資的共乘</p>
+    </div>
+
+    <div class="work-body">
+      <dl class="facts" id="facts"></dl>
+
+      <main class="work-main">
+        <figure class="cover"><img src="../assets/images/pin-deal/cover.jpg" alt="PinDeal封面"></figure>
+
+        <section data-section="overview">
+          <h2>作品概要</h2>
+          <p>手機版 Web demo，把起訖點不同的乘客組成可以分帳的計程車共乘。乘客不用自己殺價或投票：每個人先設好底線（願意走多遠、多花多少時間、車資要比自己搭便宜），再由 AI 代理人替他協商。</p>
+          <p>流程是：登入 → 輸入需求 → 解析 → 路線 → 協商 → 付款 → 追蹤。</p>
+          <p class="src">來源：<a href="../sources/pin-deal/code/AGENTS.md">AGENTS.md</a>、<a href="../sources/pin-deal/code/web/README.md">README.md</a></p>
+        </section>
+
+        <section data-section="my-role">
+          <h2>我負責的部分</h2>
+          <p>團隊作品。</p>
+          <p class="todo">待補：我在團隊中負責的部分。</p>
+        </section>
+
+        <section data-section="tech">
+          <h2>技術與工具</h2>
+          <ul>
+          <li><strong>React 19 + Vite</strong>：前端與 demo 伺服器。同一個 Wi-Fi 下，隊友可以用不同手機連進同一場媒合。</li>
+          <li><strong>Leaflet</strong>：地圖、路線與「最遠步行距離」圓圈。</li>
+          <li><strong>SQLite（better-sqlite3）</strong>：demo 帳號。</li>
+          <li><strong>OpenRouter</strong>（選用）：解析需求、把協商內容改寫成英文對話。它不能決定成交結果。沒有金鑰時改用本地規則，路線用 mock。</li>
+          <li><strong>Vitest</strong>：從淺到深拆成多個測試檔。</li>
+          </ul>
+          <p class="src">來源：<a href="../sources/pin-deal/code/web/package.json">package.json</a>、<a href="../sources/pin-deal/code/AGENTS.md">AGENTS.md</a></p>
+        </section>
+
+        <section data-section="process">
+          <h2>製作過程</h2>
+          <ol class="timeline">
+          <li><span class="when">協商規則</span>2～4 個乘客代理人加 1 個仲裁者。仲裁者先提方案 v1；每個代理人評分後提出一次改進建議；仲裁者再出 v2。剩下的乘客過半數認為 v2 分數比 v1 高，就採用 v2，否則維持 v1。</li>
+          <li><span class="when">保留步行底線</span>上下車兩端都保留最遠步行圓圈，讓代理人可以用步行距離交換條件；不改成到府接送，否則就變成一般共乘。</li>
+          <li><span class="when">車資計算</span>每個人先用新竹計程車費率算自己單獨搭的價格，共乘總額乘 0.72，再依單獨搭的價格比例分攤。</li>
+          <li><span class="when">2026 年 9 月 19～20 日</span>寫了四份設計計畫：新竹計程車費率、追蹤畫面車資、多視窗媒合、先保留再結算。</li>
+          </ol>
+          <p class="src">來源：<a href="../sources/pin-deal/code/AGENTS.md">AGENTS.md</a>、<a href="../sources/pin-deal/code/docs/superpowers/plans/2026-09-19-multi-window-match.md">2026-09-19-multi-window-match.md</a></p>
+        </section>
+
+        <section data-section="result">
+          <h2>目前成果</h2>
+          <p>以下截圖是三位 demo 乘客（Yang、Lin、Chiang）各開一個視窗，同時媒合的過程：</p>
+          <figure><img src="../assets/images/pin-deal/01-route-preferences.jpg" alt="三位乘客的路線與媒合偏好畫面" loading="lazy"><figcaption>Your route：每個人設定多花時間上限、最遠步行時間、行李數，上下車兩端各有步行圓圈</figcaption></figure>
+          <figure><img src="../assets/images/pin-deal/02-pay-result.jpg" alt="三位乘客的協商結果畫面" loading="lazy"><figcaption>協商結果：三人共乘，各自只看到自己的路線段與車資（NT$116、NT$93、NT$111）</figcaption></figure>
+          <figure><img src="../assets/images/pin-deal/03-agent-theater.jpg" alt="評審用的代理人協商室畫面" loading="lazy"><figcaption>給評審看的 Agent room：2 位代理人認為 v2 比 v1 好，3 人過半數是 2 票，所以採用 v2</figcaption></figure>
+          <figure><img src="../assets/images/pin-deal/04-agent-arbiter.svg" alt="User Agent 與 Arbiter 互動架構圖" loading="lazy"><figcaption>User Agent 與 Arbiter 的互動架構</figcaption></figure>
+          <p class="src">來源：<a href="../sources/pin-deal/code/AGENTS.md">AGENTS.md</a>、<a href="../sources/pin-deal/code/diagrams/agent-arbiter.svg">agent-arbiter.svg</a>、<a href="../sources/pin-deal/SOURCE.md">SOURCE.md</a>（截圖）</p>
+        </section>
+
+        <section data-section="reflection">
+          <h2>反思與下一步</h2>
+          <p class="todo">待補：我自己的心得與下一步。</p>
+        </section>
+      </main>
+    </div>
+
+    <nav class="pager" id="pager" aria-label="上下篇作品"></nav>
+    <footer class="site-foot">© 游苡婕 · 本頁依 CLAUDE.md 規則製作</footer>
+  </div>
+  <script src="../data/works.js"></script>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

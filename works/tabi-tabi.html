@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TabiTabi｜苡婕的作品紀錄簿</title>
+  <meta name="description" content="像素風格的多人旅遊 App：行程、地圖、記帳">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-slug="tabi-tabi">
+  <div class="wrap">
+    <header class="site-head">
+      <a class="name" href="../index.html">苡婕的作品紀錄簿</a>
+      <nav><a href="../index.html#works">作品</a><a href="../index.html#about">關於我</a></nav>
+    </header>
+
+    <div class="work-head">
+      <a class="back" href="../index.html#works">回作品目錄</a>
+      <h1>TabiTabi</h1>
+      <p class="sub">像素風格的多人旅遊 App：行程、地圖、記帳</p>
+    </div>
+
+    <div class="work-body">
+      <dl class="facts" id="facts"></dl>
+
+      <main class="work-main">
+        <figure class="cover"><img src="../assets/images/tabi-tabi/cover.jpg" alt="TabiTabi封面"></figure>
+
+        <section data-section="overview">
+          <h2>作品概要</h2>
+          <p>給一群人一起旅行用的像素風格 App。建立或加入一趟「冒險」後，隊員可以共用行程、地圖、背包清單和記帳。</p>
+          <p class="src">來源：<a href="../sources/tabi-tabi/code/app/home.tsx">home.tsx</a>、<a href="../sources/tabi-tabi/SOURCE.md">SOURCE.md</a></p>
+        </section>
+
+        <section data-section="my-role">
+          <h2>我負責的部分</h2>
+          <p>團隊作品。</p>
+          <p class="todo">待補：我在團隊中負責的部分。</p>
+        </section>
+
+        <section data-section="tech">
+          <h2>技術與工具</h2>
+          <ul>
+          <li><strong>Expo / React Native + expo-router</strong>：底部五個分頁：行程、地圖、背包、錢包、隊伍。</li>
+          <li><strong>Firebase</strong>：身分驗證與 Firestore 即時資料同步，隊員改了資料，其他人馬上看得到。</li>
+          <li><strong>react-native-maps + expo-location</strong>：把行程地址轉成座標畫在地圖上，也可以跳到 Google Maps。</li>
+          <li><strong>open.er-api.com 匯率 API</strong>：外幣消費自動換算成新台幣。</li>
+          <li>像素字型 Press Start 2P、Cubic 11，以及像素角色與圖示。</li>
+          </ul>
+          <p class="src">來源：<a href="../sources/tabi-tabi/code/package.json">package.json</a>、<a href="../sources/tabi-tabi/code/app/(tabs)/wallet.tsx">wallet.tsx</a>、<a href="../sources/tabi-tabi/code/app/(tabs)/map.tsx">map.tsx</a></p>
+        </section>
+
+        <section data-section="process">
+          <h2>製作過程</h2>
+          <ol class="timeline">
+          <li><span class="when">2026 年 5 月</span>參加行動應用創新賽，和團隊一起開發。</li>
+          </ol>
+          <p class="todo">待補：開發過程中的關鍵決定與遇到的問題。</p>
+          <p class="src">來源：<a href="../sources/tabi-tabi/SOURCE.md">SOURCE.md</a></p>
+        </section>
+
+        <section data-section="result">
+          <h2>目前成果</h2>
+          <div class="shots shots-phone">
+            <figure><img src="../assets/images/tabi-tabi/01-character-select.png" alt="選擇角色與輸入名字的畫面" loading="lazy"><figcaption>選角色、輸入名字</figcaption></figure>
+            <figure><img src="../assets/images/tabi-tabi/02-itinerary.png" alt="每日行程畫面" loading="lazy"><figcaption>行程：依天分頁，每筆有時間與類型</figcaption></figure>
+            <figure><img src="../assets/images/tabi-tabi/03-map.png" alt="行程地圖畫面" loading="lazy"><figcaption>地圖：當天行程的地點</figcaption></figure>
+            <figure><img src="../assets/images/tabi-tabi/04-backpack.png" alt="背包準備清單畫面" loading="lazy"><figcaption>背包：準備清單與數位證件</figcaption></figure>
+            <figure><img src="../assets/images/tabi-tabi/05-transactions.png" alt="交易紀錄畫面" loading="lazy"><figcaption>錢包：日圓消費的交易紀錄</figcaption></figure>
+            <figure><img src="../assets/images/tabi-tabi/06-split.png" alt="依比例分帳的畫面" loading="lazy"><figcaption>替誰付錢：依比例或金額分帳</figcaption></figure>
+          </div>
+          <ul>
+          <li><strong>行程</strong>：每天的行程可以填時間、類型、地址、備註和圖片。</li>
+          <li><strong>錢包</strong>：記錄付款人、替誰付錢；「分帳關係」分頁算出誰該還誰多少。</li>
+          <li><strong>隊伍</strong>：隊員列表、隊長標示、深色模式、離開隊伍。</li>
+          </ul>
+          <p class="src">來源：<a href="../sources/tabi-tabi/code/app/(tabs)/adventure.tsx">adventure.tsx</a>、<a href="../sources/tabi-tabi/code/app/(tabs)/wallet.tsx">wallet.tsx</a>、<a href="../sources/tabi-tabi/SOURCE.md">SOURCE.md</a>（截圖）</p>
+        </section>
+
+        <section data-section="reflection">
+          <h2>反思與下一步</h2>
+          <p class="todo">待補：我自己的心得與下一步。</p>
+        </section>
+      </main>
+    </div>
+
+    <nav class="pager" id="pager" aria-label="上下篇作品"></nav>
+    <footer class="site-foot">© 游苡婕 · 本頁依 CLAUDE.md 規則製作</footer>
+  </div>
+  <script src="../data/works.js"></script>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

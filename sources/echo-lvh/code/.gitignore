@@ -1,0 +1,15 @@
+# 資料與大型檔案不進 git
+*.zip
+*.avi
+data/
+outputs/
+checkpoints/
+*.pt
+*.onnx
+# 機密
+.env
+# Python / Node
+__pycache__/
+.venv/
+node_modules/
+.expo/

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EchoLVH 小助手｜苡婕的作品紀錄簿</title>
+  <meta name="description" content="從心臟超音波量心壁厚度，再由 Gemini 寫報告">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-slug="echo-lvh">
+  <div class="wrap">
+    <header class="site-head">
+      <a class="name" href="../index.html">苡婕的作品紀錄簿</a>
+      <nav><a href="../index.html#works">作品</a><a href="../index.html#about">關於我</a></nav>
+    </header>
+
+    <div class="work-head">
+      <a class="back" href="../index.html#works">回作品目錄</a>
+      <h1>EchoLVH 小助手</h1>
+      <p class="sub">從心臟超音波量心壁厚度，再由 Gemini 寫報告</p>
+    </div>
+
+    <div class="work-body">
+      <dl class="facts" id="facts"></dl>
+
+      <main class="work-main">
+        <figure class="cover"><img src="../assets/images/echo-lvh/cover.svg" alt="EchoLVH 小助手封面"></figure>
+
+        <section data-section="overview">
+          <h2>作品概要</h2>
+          <p>上傳一張心臟超音波（PLAX 切面）圖片，系統自動量測 IVSd、LVIDd、LVPWd 三個心壁數值，判斷是否疑似左心室肥厚，再由 Gemini 生成醫師版與白話版報告。</p>
+          <p>訓練資料是 Stanford 的 EchoNet-LVH 資料集（限研究與非商業用途）。<strong>本系統不是醫療診斷工具。</strong></p>
+          <p class="src">來源：<a href="../sources/echo-lvh/code/README.md">README.md</a></p>
+        </section>
+
+        <section data-section="my-role">
+          <h2>我負責的部分</h2>
+          <p>個人作品。資料探勘、模型訓練、後端 API、手機 App 和報告品質評估都由我完成。</p>
+        </section>
+
+        <section data-section="tech">
+          <h2>技術與工具</h2>
+          <ul>
+          <li><strong>PyTorch U-Net（ResNet 編碼器）</strong>：輸出 4 通道熱力圖，找出 4 個關鍵點。三條量測線首尾相接，所以 4 個點就能算出 3 個數值。</li>
+          <li><strong>Google Colab（T4 GPU）</strong>：訓練模型。</li>
+          <li><strong>FastAPI</strong>：提供 <code>/analyze</code>、<code>/report</code>、<code>/chat</code>、<code>/samples</code>、<code>/health</code> 等 API。</li>
+          <li><strong>Gemini API</strong>（<code>gemini-3.5-flash-lite</code>，免費方案）：產生報告和回答追問。報告會做數字一致性檢查，失敗時改用模板。</li>
+          <li><strong>Expo / React Native</strong>：手機 App，有首頁、範例圖、量測結果、AI 報告、問 AI 五個畫面。</li>
+          </ul>
+          <p class="src">來源：<a href="../sources/echo-lvh/code/docs/week2_data.md">week2_data.md</a>、<a href="../sources/echo-lvh/code/backend/README.md">README.md</a>、<a href="../sources/echo-lvh/code/app/README.md">README.md</a></p>
+        </section>
+
+        <section data-section="process">
+          <h2>製作過程</h2>
+          <ol class="timeline">
+          <li><span class="when">第 1 週：資料探勘</span>96.9% 的影片（11,173 支）三條量測線在同一格畫面上首尾相接，確認「4 個關鍵點」的設計可行。從 zip 直接讀影片，不用解壓。</li>
+          <li><span class="when">第 2 週：擷取訓練資料</span>取標註那一格，轉灰階、補邊成正方形、縮成 256×256。用座標反算量測值，和醫師數值平均差小於 0.05 mm。</li>
+          <li><span class="when">第 3 週：第一版模型</span>一開始用加權 MSE，模型輸出全 0（heatmap collapse）。改成空間 softmax 交叉熵後才學得起來。</li>
+          <li><span class="when">第 4 週：資料量實驗（v2）</span>訓練資料從 2,400 張增加到 9,756 張，LVPWd 誤差降 16%、LVIDd 降 19%，IVSd 幾乎不變。</li>
+          <li><span class="when">第 5 週：Gemini 報告</span>模型不接受 <code>thinking_budget=0</code>，回傳 400 錯誤，改成自動降級重試。Prompt 改用「本系統設定的門檻」措辭，避免寫成醫學標準。</li>
+          <li><span class="when">第 7 週：報告品質評估</span>30 份報告中有 7 份因 Google 伺服器忙碌（503、504）改用模板，所以加上備用模型自動切換。</li>
+          <li><span class="when">v3 消融實驗</span>試了厚度損失加強化增強（v3a）、384 解析度（v3b）、ResNet34（v3d）和 TTA。384 解析度讓 IVSd 變差，TTA 幾乎沒有效果又慢約 6 倍，最後採用 v3d。</li>
+          </ol>
+          <p class="src">來源：<a href="../sources/echo-lvh/code/docs/week1_findings.md">week1_findings.md</a>、<a href="../sources/echo-lvh/code/docs/week2_data.md">week2_data.md</a></p>
+        </section>
+
+        <section data-section="result">
+          <h2>目前成果</h2>
+          <p>最終模型 v3d（ResNet34、256 解析度）在 325 張測試圖上的平均誤差：</p>
+          <ul>
+          <li>LVPWd 1.24 mm、LVIDd 2.14 mm、IVSd 1.52 mm（原論文為 1.2、2.4、1.4 mm）</li>
+          <li>肥厚判斷準確率 85.2%（v2 為 81.2%）</li>
+          </ul>
+          <p>AI 報告品質評估（30 例，分層抽樣）：數字一致率、結論一致率、無不當用語、附免責聲明都是 100%，報告平均生成 12.2 秒。</p>
+          <figure><img src="../assets/images/echo-lvh/01-measurement-hist.png" alt="資料集三個量測值的分布直方圖"><figcaption>資料集中 IVSd、LVIDd、LVPWd 的分布（第 1 週資料探勘）</figcaption></figure>
+          <p class="todo">待補：App 畫面截圖。資料集影像不能公開，截圖不可以出現超音波畫面。</p>
+          <p class="src">來源：<a href="../sources/echo-lvh/code/docs/week2_data.md">week2_data.md</a>、<a href="../sources/echo-lvh/code/outputs/report_eval_summary.md">report_eval_summary.md</a></p>
+        </section>
+
+        <section data-section="reflection">
+          <h2>反思與下一步</h2>
+          <p>紀錄裡已經寫下的限制與下一步：</p>
+          <ul>
+          <li>上傳圖片如果不知道比例尺，只能用資料集中位數估計，公分值僅供參考。</li>
+          <li>可讀性評估還沒做：要請 2～3 位同學填問卷。</li>
+          </ul>
+          <p class="todo">待補：我自己的心得。</p>
+        </section>
+      </main>
+    </div>
+
+    <nav class="pager" id="pager" aria-label="上下篇作品"></nav>
+    <footer class="site-foot">© 游苡婕 · 本頁依 CLAUDE.md 規則製作</footer>
+  </div>
+  <script src="../data/works.js"></script>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

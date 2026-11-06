@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>苡婕的作品紀錄簿</title>
+  <meta name="description" content="游苡婕的作品集：AI 應用、網頁應用與手機 App。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-head">
+      <a class="name" href="index.html">苡婕的作品紀錄簿</a>
+      <nav><a href="#works">作品</a><a href="#about">關於我</a></nav>
+    </header>
+
+    <section class="intro">
+      <h1>游苡婕</h1>
+      <p>數位科技設計系，輔修資工。我做 <strong>AI 應用</strong>、<strong>網頁</strong>和<strong>手機 App</strong>。這裡每一頁都是一件作品的紀錄：做了什麼、怎麼做、做到哪裡，每一段都附上原始程式碼的來源。</p>
+      <!-- 一次性繪製的脈波線（CLAUDE.md 第 9 節唯一的動畫） -->
+      <svg class="pulse" viewBox="0 0 1000 90" preserveAspectRatio="none" aria-hidden="true">
+        <path class="draw" d="M0 62 H70 C88 62 92 14 110 14 C126 14 128 40 140 44 C150 47 152 34 160 36 C172 40 182 62 210 62 H290 C308 62 312 14 330 14 C346 14 348 40 360 44 C370 47 372 34 380 36 C392 40 402 62 430 62 H510 C528 62 532 14 550 14 C566 14 568 40 580 44 C590 47 592 34 600 36 C612 40 622 62 650 62 H730 C748 62 752 14 770 14 C786 14 788 40 800 44 C810 47 812 34 820 36 C832 40 842 62 870 62 H1000"/>
+      </svg>
+    </section>
+
+    <section id="works">
+      <div class="index-head">
+        <h2>作品目錄</h2>
+        <div class="filters" id="filters" role="group" aria-label="依類型篩選"></div>
+      </div>
+      <ol class="work-list" id="work-list"></ol>
+      <noscript><p class="empty">作品目錄需要 JavaScript 才能顯示，也可以直接到 works/ 資料夾瀏覽。</p></noscript>
+    </section>
+
+    <section class="about" id="about">
+      <h2>關於我</h2>
+      <p>國立臺北教育大學 數位科技設計系，輔系資訊工程。2024 年入學。</p>
+      <p>正在找前端、後端與 AI 整合應用相關的實習。</p>
+      <p class="todo">待補：GitHub 帳號連結與聯絡方式。</p>
+    </section>
+
+    <footer class="site-foot">© 游苡婕 · 本網站依 <a href="CLAUDE.md">CLAUDE.md</a> 規則製作，原始資料在 <a href="sources/README.md">sources/</a></footer>
+  </div>
+  <script src="data/works.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

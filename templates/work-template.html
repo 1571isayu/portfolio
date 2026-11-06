@@ -1,0 +1,87 @@
+<!doctype html>
+<!--
+  作品頁模板。使用方式（見 CLAUDE.md 第 10 節 A）：
+  1. 複製到 works/<slug>.html
+  2. 把所有「SLUG」「作品名稱」「一句話副標」換掉
+  3. 六個 section 的順序與 data-section 不可更改
+  4. 資訊欄與上下篇導覽會自動產生，不要手寫
+  5. 除了 my-role 與 reflection，每個 section 最後都要有 <p class="src"> 來源連結
+  6. 刪掉這段註解
+-->
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>作品名稱｜苡婕的作品紀錄簿</title>
+  <meta name="description" content="一句話副標">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-slug="SLUG">
+  <div class="wrap">
+    <header class="site-head">
+      <a class="name" href="../index.html">苡婕的作品紀錄簿</a>
+      <nav><a href="../index.html#works">作品</a><a href="../index.html#about">關於我</a></nav>
+    </header>
+
+    <div class="work-head">
+      <a class="back" href="../index.html#works">回作品目錄</a>
+      <h1>作品名稱</h1>
+      <p class="sub">一句話副標</p>
+    </div>
+
+    <div class="work-body">
+      <dl class="facts" id="facts"></dl>
+
+      <main class="work-main">
+        <figure class="cover"><img src="../assets/images/SLUG/cover.svg" alt="作品名稱封面"></figure>
+
+        <section data-section="overview">
+          <h2>作品概要</h2>
+          <p>這是什麼、給誰用、解決什麼問題。</p>
+          <p class="src">來源：<a href="../sources/SLUG/SOURCE.md">SOURCE.md</a></p>
+        </section>
+
+        <section data-section="my-role">
+          <h2>我負責的部分</h2>
+          <p>團隊分工，以及我自己做了哪些事。</p>
+        </section>
+
+        <section data-section="tech">
+          <h2>技術與工具</h2>
+          <ul>
+            <li>工具：為什麼選它</li>
+          </ul>
+          <p class="src">來源：<a href="../sources/SLUG/SOURCE.md">SOURCE.md</a></p>
+        </section>
+
+        <section data-section="process">
+          <h2>製作過程</h2>
+          <ol class="timeline">
+            <li><span class="when">階段或日期</span>做了什麼決定、遇到什麼問題。</li>
+          </ol>
+          <p class="src">來源：<a href="../sources/SLUG/SOURCE.md">SOURCE.md</a></p>
+        </section>
+
+        <section data-section="result">
+          <h2>目前成果</h2>
+          <p class="todo">待補：成果截圖或連結。</p>
+          <p class="src">來源：<a href="../sources/SLUG/SOURCE.md">SOURCE.md</a></p>
+        </section>
+
+        <section data-section="reflection">
+          <h2>反思與下一步</h2>
+          <p>學到什麼、下一步打算做什麼。</p>
+        </section>
+      </main>
+    </div>
+
+    <nav class="pager" id="pager" aria-label="上下篇作品"></nav>
+    <footer class="site-foot">© 游苡婕 · 本頁依 CLAUDE.md 規則製作</footer>
+  </div>
+  <script src="../data/works.js"></script>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>
